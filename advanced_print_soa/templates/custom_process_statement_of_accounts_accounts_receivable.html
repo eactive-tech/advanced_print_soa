@@ -12,14 +12,6 @@
 		min-height: calc(100% - 40px); 
 		box-sizing: border-box; 
 	}
-	#footer {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		text-align: center;
-		padding: 10px;
-	}
 	
 	.print-format {
 		padding: 0mm;
@@ -36,7 +28,7 @@
         margin-bottom: 30px;
     }
     .logo-img {
-        max-width: 150px;
+        max-width: 250px;
     }
 </style>
 
@@ -186,7 +178,7 @@
 {% endif %}
 
 
-<table class="table table-bordered" style="font-size: 9px;">
+<table class="table table-bordered" style="font-size: 7px;">
 	<thead>
 		<tr>
 			{% if(report.report_name == "Accounts Receivable" or report.report_name == "Accounts Payable") %}
@@ -228,10 +220,10 @@
 	</thead>
 	{% set ns = namespace(page_no = 0) %}
 	{% for i in range(data|length) %}
-		{% if loop.index % 30 == 1 and not loop.first %}
+		{% if loop.index % 20 == 1 and not loop.first %}
 			{% set ns.page_no = ns.page_no + 1 %}
 			</table>
-			<table width="100%" style="font-size: 10px; text-align: center;">
+			<table width="100%" style="font-size: 8px; text-align: center;">
 				<tr>
 					<td>
 						<h3 style="color:#DA2128; margin: 0;">{{ filters.company }}</h3>
@@ -276,7 +268,7 @@
 
 					<!-- Customer Information -->
 					<div class="mb-2">
-						<strong>Customer Name: </strong>{{ filters.party_name[0] }}
+						<strong>Customer Name: </strong>{{ filters.customer_name }}
 					</div>
 
 					<!-- Customer Address -->
@@ -304,7 +296,7 @@
 
 					<!-- Date Range -->
 					<div>
-						<strong>Date: </strong>{{ frappe.format(filters.from_date, 'Date') }} to {{ frappe.format(filters.to_date, 'Date') }}
+        <strong>Date: </strong>{{ frappe.format((filters.report_date), 'Date') }}
 					</div>
 					</td>
 
@@ -318,7 +310,7 @@
 				</tr>
 			</table>
 
-			<table class="table table-bordered" style="font-size: 9px;">
+			<table class="table table-bordered" style="font-size: 7px;">
 				<thead>
 				<tr>
 					{% if(report.report_name == "Accounts Receivable" or report.report_name == "Accounts Payable") %}
@@ -523,7 +515,3 @@
 </table>
 {% set ns.page_no = ns.page_no + 1 %}
 <p class="text-right">Page - {{ns.page_no }}</p>
-
-
-
-
