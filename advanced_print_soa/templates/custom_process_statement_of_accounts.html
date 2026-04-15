@@ -96,7 +96,7 @@
 	<tbody>
 	{% set ns = namespace(page_no = 0) %}
 	{% for row in data %}
-		{% if loop.index % 25 == 1 and not loop.first %}
+		{% if loop.index % 17 == 1 and not loop.first %}
 			{% set ns.page_no = ns.page_no + 1 %}
 			</table>
 			<table width="100%" style="font-size: 15px; text-align: center;">
@@ -180,7 +180,7 @@
 					</td>
 				</tr>
 				</table>
-			<table class="table table-bordered" style="font-size: 15px">
+			<table class="table table-bordered items-table" style="font-size: 15px">
 				<thead>
 					<tr>
 						<th style="width: 9%">{{ _("Date") }}</th>

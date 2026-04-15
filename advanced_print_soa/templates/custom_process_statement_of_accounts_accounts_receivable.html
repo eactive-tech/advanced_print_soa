@@ -227,7 +227,7 @@
 	</thead>
 	{% set ns = namespace(page_no = 0) %}
 	{% for i in range(data|length) %}
-		{% if loop.index % 20 == 1 and not loop.first %}
+		{% if loop.index % 17 == 1 and not loop.first %}
 			{% set ns.page_no = ns.page_no + 1 %}
 			</table>
 			<table width="100%" style="font-size: 15px; text-align: center;">
@@ -314,7 +314,7 @@
 				</tr>
 			</table>
 
-			<table class="table table-bordered" style="font-size: 15px;">
+			<table class="table table-bordered items-table" style="font-size: 15px;">
 				<thead>
 				<tr>
 					{% if(report.report_name == "Accounts Receivable" or report.report_name == "Accounts Payable") %}
